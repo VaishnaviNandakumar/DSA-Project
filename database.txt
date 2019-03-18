@@ -1,0 +1,207 @@
+{
+"doc":[
+  {
+    "ID": 1,
+    "Name": "Dr. Akhil Nair",
+    "Qualification": "MBBS",
+    "Field": "Cardiology",
+	"Code": "1001",
+    "Position":"Doctor ",
+    "Rank":"Senior",
+    "Fee": 200,    
+    "Pr":1,
+    "Avg-Mon": 5,
+    "Avg-Tue": 6,
+    "Avg-Wed": 8,
+    "Avg-Thu": 4,
+    "Avg-Fri": 5,
+    "Avg-Sat": 9,
+    "Avg-Sun": 11
+  },
+  {
+    "ID": 2,
+    "Name": "Dr. Rashmi Menon",
+    "Qualification": "MBBS",
+    "Field": "Dermatology",
+	"Code": "1002",
+    "Position":"Doctor ",
+     "Rank":"Senior",
+    "Fee": 120,  
+    
+    "Pr":2,
+    "Avg-Mon": 7,
+    "Avg-Tue": 9,
+    "Avg-Wed": 3,
+    "Avg-Thu": 8,
+    "Avg-Fri": 9,
+    "Avg-Sat": 4,
+    "Avg-Sun": 9
+  },
+  {
+    "ID": 3,
+    "Name": "Dr Haritha Krishna",
+    "Qualification": "MBBS",
+    "Field": "Endocrinology",
+	"Code": "1003",
+    "Position":"Doctor ",
+    "Rank":"Senior",
+    "Fee": 300,     
+    
+    "Pr":3,
+    "Avg-Mon": 1,
+    "Avg-Tue": 4,
+    "Avg-Wed": 2,
+    "Avg-Thu": 5,
+    "Avg-Fri": 8,
+    "Avg-Sat": 9,
+    "Avg-Sun": 3
+  },
+  {
+    "ID": 4,
+    "Name": "Dr. Sateesh Roy",
+    "Qualification": "MBBS",
+    "Position":"Doctor ",
+    "Rank":"Senior",
+    "Field": "Gastroenterology",
+	"Code": "1004",
+    "Fee": 250, 
+    
+    "Pr":4,
+    "Avg-Mon": 9,
+    "Avg-Tue": 1,
+    "Avg-Wed": 7,
+    "Avg-Thu": 8,
+    "Avg-Fri": 2,
+    "Avg-Sat": 6,
+    "Avg-Sun": 4
+  },
+  {
+    "ID": 5,
+    "Name": "Dr. Farah Khalid",
+    "Qualification": "MBBS",
+    "Position":"Doctor ",
+    "Field": "Hematology",
+	"Code": "1005",
+    "Rank":"Senior",
+    "Fee": 150,    
+    
+    "Pr":5,
+    "Avg-Mon": 12,
+    "Avg-Tue": 5,
+    "Avg-Wed": 9,
+    "Avg-Thu": 5,
+    "Avg-Fri": 3,
+    "Avg-Sat": 2,
+    "Avg-Sun": 1
+  },
+  {
+    "ID": 6,
+    "Name": "Dr. Suman Kumar",
+    "Qualification": "MBBS",
+    "Position":"Doctor ",
+    "Rank":"Senior",
+    "Field": "Neurologists",
+      "Code": "1006",
+    "Fee": 450,   
+    
+    "Pr":6,
+    "Avg-Mon": 7,
+    "Avg-Tue": 9,
+    "Avg-Wed": 4,
+    "Avg-Thu": 3,
+    "Avg-Fri": 8,
+    "Avg-Sat": 2,
+    "Avg-Sun": 8
+  },
+  {
+    "ID": 7,
+    "Name": "Dr. Hari Iyer",
+    "Qualification": "MBBS",
+    "Position":"Doctor ",
+    "Rank":"Junior",
+    "Field": "Endocrinologist",
+	"Code": "1003",
+    "Fee": 300,    
+    
+    "Pr":7,
+    "Avg-Mon": 8,
+    "Avg-Tue": 4,
+    "Avg-Wed": 2,
+    "Avg-Thu": 1,
+    "Avg-Fri": 6,
+    "Avg-Sat": 3,
+    "Avg-Sun": 5
+  },
+  {
+    "ID": 8,
+    "Name": "Dr. Priya Jai",
+    "Qualification": "MBBS",
+    "Position":"Doctor ",
+    "Rank":"Junior",
+    "Field": "Dermatologist",
+         "Code": "1002",
+    "Fee": 120,   
+    
+    "Pr":8,
+    "Avg-Mon": 2,
+    "Avg-Tue": 6,
+    "Avg-Wed": 7,
+    "Avg-Thu": 9,
+    "Avg-Fri": 4,
+    "Avg-Sat": 1,
+    "Avg-Sun": 2
+  },
+  {
+    "ID": 9,
+    "Name": "Dr. Suresh Paul",
+    "Qualification": "MBBS",
+    "Position":"Doctor ",  
+    "Rank":"Junior",
+    "Field": "Cardiologist",
+	"Code": "1001",
+
+    "Fee": 200,       
+    
+    "Pr":9,
+    "Avg-Mon": 5,
+    "Avg-Tue": 3,
+    "Avg-Wed": 2,
+    "Avg-Thu": 1,
+    "Avg-Fri": 3,
+    "Avg-Sat": 7,
+    "Avg-Sun": 6
+  },
+  {
+    "ID": 10,
+    "Name": "Dr. Yadhu Sai",
+    "Qualification": "MBBS",
+    "Field": "Cardiologist",
+     "Code": "1001",
+    "Rank":"Junior",
+    "Position":"Doctor ",
+    "Fee": 200,    
+    
+    "Pr":10,
+    "Avg-Mon": 14,
+    "Avg-Tue": 7,
+    "Avg-Wed": 8,
+    "Avg-Thu": 2,
+    "Avg-Fri": 8,
+    "Avg-Sat": 9,
+    "Avg-Sun": 7
+  }
+]
+}
+
+
+    elif opt==3:
+        print("1. Nurses \n 2. Wardens \n 3. Help")
+        k=input()
+        for i in range(0,count):
+        if(new['doc'][i]['Position']==k):
+                j=i
+                ident=new['doc'][j]['ID']
+                name= new['doc'][j]['Name']
+            print(ident,name,qual,fee)
+     
+
