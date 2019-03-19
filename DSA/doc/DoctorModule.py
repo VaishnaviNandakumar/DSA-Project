@@ -1,8 +1,10 @@
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 
 
+THIS_FOLDER = os.path.dirname(os.path.abspath(__file__))
 
 def openfile(file_name):
     with open(file_name,'r') as f:
@@ -10,8 +12,8 @@ def openfile(file_name):
         return r
 
 def count_entry(obj):
-        count = len(obj['doc'])
-        return count
+    count = len(obj['doc'])
+    return count
 class Node:
 
     def __init__(self, data):
@@ -37,18 +39,18 @@ class Node:
             self.data = data
 
 # Print the Tree
-    def PrintTree(self):
-        data= openfile('database.json')
-        count=count_entry(data)
-        if self.left:
-            self.left.PrintTree()
-        a=self.data
-        for i in range(0,count):
-            if(a== data['doc'][i]['Pr']):
-                print("Designation:\t",data['doc'][i]['Position']),
-                print("Name:\t",data['doc'][i]['Name']),
-        if self.right:
-            self.right.PrintTree()
+    # def PrintTree(self):
+    #     data= openfile(os.path.join(THIS_FOLDER, 'database.json'))
+    #     count=count_entry(data)
+    #     if self.left:
+    #         self.left.PrintTree()
+    #     a=self.data
+    #     for i in range(0,count):
+    #         if(a== data['doc'][i]['Pr']):
+    #             print("Designation:\t",data['doc'][i]['Position']),
+    #             print("Name:\t",data['doc'][i]['Name']),
+    #     if self.right:
+    #         self.right.PrintTree()
 
 # Preorder traversal
 # Root -> Left ->Right
@@ -64,19 +66,19 @@ def plot_graph(mon,tue,wed,thu,fri,sat,sun):
     x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
     y = [mon,tue,wed,thu,fri,sat,sun]
     #tick_label = ['Monday','Tuesday', 'Wednesday' ,'Thursday' ,'Friday' ,'Saturday',' Sunday']
-    plt.plot(x, y, color='green', linestyle='dashed', linewidth = 3, 
-         marker='o', markerfacecolor='blue', markersize=12) 
-    plt.ylim(1,20) 
-    plt.xlim(1,20) 
+    plt.plot(x, y, color='green', linestyle='dashed', linewidth = 3,
+         marker='o', markerfacecolor='blue', markersize=12)
+    plt.ylim(1,20)
+    plt.xlim(1,20)
     plt.xlabel("Days")
     plt.ylabel("Average Patient Count")
     plt.title("Work Schedule")
-    plt.show()
+    # plt.show()
 
 def dept_details(b,count):
-    new= openfile('database.json')
+    new= openfile(os.path.join(THIS_FOLDER, 'database.json'))
 def doc_details(a,count):
-    new= openfile('database.json')
+    new= openfile(os.path.join(THIS_FOLDER, 'database.json'))
     for i in range(0,count):
         if(i==a):
             ident= new['doc'][i]['ID']
@@ -99,14 +101,14 @@ def doc_details(a,count):
     x = [ 0, 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
     y = [0,mon,tue,wed,thu,fri,sat,sun]
     #tick_label = ['Monday','Tuesday', 'Wednesday' ,'Thursday' ,'Friday' ,'Saturday',' Sunday']
-    plt.plot(x, y, color='green', linestyle='dashed', linewidth = 3, 
-         marker='o', markerfacecolor='blue', markersize=12) 
-    plt.ylim(1,15) 
-    plt.xlim(1,8) 
+    plt.plot(x, y, color='green', linestyle='dashed', linewidth = 3,
+         marker='o', markerfacecolor='blue', markersize=12)
+    plt.ylim(1,15)
+    plt.xlim(1,8)
     plt.xlabel("Days")
     plt.ylabel("Average Patient Count")
     plt.title("Work Schedule")
-    plt.show()
+    # plt.show()
     context = {
         "id":ident,
         "name":name,
@@ -117,33 +119,30 @@ def doc_details(a,count):
         "fee":fee,
     }
     return context
-    
+
 
 
 
 
 def doc_select(name):
     flag=-1
-    new= openfile('database.json')
-    count=count_entry(data)
+    new= openfile(os.path.join(THIS_FOLDER, 'database.json'))
+    count=count_entry(new)
+    context = {}
     # name=input("Enter the name of the Doctor you want to select")
     for i in range(0,count):
         if(new['doc'][i]['Name']==name):
             # print("Doctor Found!")
             pos=i
             flag=0
-            doc_details(pos,count)
+            context =doc_details(pos,count)
             break
-           
-    if flag==0:
-        return 1
-    if flag==-1:
-        # print("Doctor not found")
-        return 0
-        
+
+    return context
+
 
 def dept_select():
-     new= openfile('database.json') 
+     new= openfile(os.path.join(THIS_FOLDER, 'database.json'))
      count=count_entry(data)
      print("\n Departments available")
      print("\n 1. Board \n 2. Doctors \n 3. Staff \n 4. View Hospital Hierarchy")
@@ -152,18 +151,18 @@ def dept_select():
          for i in range(0,count):
              if(new['doc'][i]['Position']=='Board'):
                 j=i
-            
+
                 name= new['doc'][j]['Name']
                 qual= new['doc'][j]['Qualification']
                 des= new['doc'][j]['Designation']
                 exp= new['doc'][j]['Experience']
                 print(" Name:\t",name,"\n","Qualifications:\t ",qual,"\n","Designation:\t",des,"\n","Experience:\t",exp,"\n","\n")
-         
+
      elif opt==2:
          print("Code\tDept Name \n  1001\tCardiology \n  1002\tDermatology \n  1003\tGynaecology \n  1004\tOncology \n  1005\tHematology\n  1006\tNeurology\n \n")
          print("Enter the code to number for more information about department")
          inpt=int(input())
-         
+
          for i in range(0,18):
              a=new['doc'][i]['Code']
              if(a==inpt):
@@ -173,28 +172,28 @@ def dept_select():
          for i in range(0,count):
              if(new['doc'][i]['Position']=='Staff'):
                 j=i
-            
+
                 name= new['doc'][j]['Name']
                 qual= new['doc'][j]['Qualification']
                 des= new['doc'][j]['Designation']
                 exp= new['doc'][j]['Experience']
                 print(" Name:\t",name,"\n","Qualifications:\t ", qual,"\n","Designation:\t", des,"\n","Experience:\t",exp,"\n","\n")
-         
-     
+
+
      elif opt==4:
           root.PrintTree()
-    
-        
+
+
 
 
 if __name__ == "__main__":
-    data= openfile('database.json')
+    data= openfile(os.path.join(THIS_FOLDER, 'database.json'))
     count=count_entry(data)
-    root = Node(15)    
+    root = Node(15)
     for i in range(1,count):
         a=data['doc'][i]['Pr']
         root.insert(a)
-   
+
     #print(root.PreorderTraversal(root))
     print("------------WELCOME TO THE DOCTOR DATABASE------------------")
     while(1):
@@ -207,4 +206,3 @@ if __name__ == "__main__":
              dept_select()
          elif opt==3:
              exit()
-         
