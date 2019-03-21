@@ -16,3 +16,10 @@ def search(request):
 @csrf_exempt
 def dept(request):
     return render(request, 'doc/dept.html')
+
+@csrf_exempt
+def deptpage(request, id):
+    print(id)
+    context = DoctorModule.dept_select(int(id))
+    print(context)
+    return render(request, 'doc/deptpage.html', {'context':context})

@@ -141,47 +141,55 @@ def doc_select(name):
     return context
 
 
-def dept_select():
+def dept_select(opt):
      new= openfile(os.path.join(THIS_FOLDER, 'database.json'))
-     count=count_entry(data)
-     print("\n Departments available")
-     print("\n 1. Board \n 2. Doctors \n 3. Staff \n 4. View Hospital Hierarchy")
-     opt=int(input())
+     count=count_entry(new)
+    #  print("\n Departments available")
+    #  print("\n 1. Board \n 2. Doctors \n 3. Staff \n 4. View Hospital Hierarchy")
+    #  opt=int(input())
      if opt==1:
+         dict_board = {}
+         k=1
          for i in range(0,count):
              if(new['doc'][i]['Position']=='Board'):
                 j=i
-
                 name= new['doc'][j]['Name']
                 qual= new['doc'][j]['Qualification']
                 des= new['doc'][j]['Designation']
                 exp= new['doc'][j]['Experience']
-                print(" Name:\t",name,"\n","Qualifications:\t ",qual,"\n","Designation:\t",des,"\n","Experience:\t",exp,"\n","\n")
+                # print(" Name:\t",name,"\n","Qualifications:\t ",qual,"\n","Designation:\t",des,"\n","Experience:\t",exp,"\n","\n")
+                temp = {k: {'name':name, 'qual':qual, 'des':des, 'exp':exp}}
+                k+=1
+                dict_board.update(temp)
+         return dict_board
 
-     elif opt==2:
-         print("Code\tDept Name \n  1001\tCardiology \n  1002\tDermatology \n  1003\tGynaecology \n  1004\tOncology \n  1005\tHematology\n  1006\tNeurology\n \n")
-         print("Enter the code to number for more information about department")
-         inpt=int(input())
+    #  elif opt==2:
+    #      print("Code\tDept Name \n  1001\tCardiology \n  1002\tDermatology \n  1003\tGynaecology \n  1004\tOncology \n  1005\tHematology\n  1006\tNeurology\n \n")
+    #      print("Enter the code to number for more information about department")
+    #      inpt=int(input())
 
-         for i in range(0,18):
-             a=new['doc'][i]['Code']
-             if(a==inpt):
-                 print(new['doc'][i]['Name'])
-                 print(new['doc'][i]['Rank'])
-     elif opt==3:
-         for i in range(0,count):
-             if(new['doc'][i]['Position']=='Staff'):
-                j=i
+    #      for i in range(0,18):
+    #          a=new['doc'][i]['Code']
+    #          if(a==inpt):
+    #              print(new['doc'][i]['Name'])
+    #              print(new['doc'][i]['Rank'])
+    #  elif opt==3:
+    #      for i in range(0,count):
+    #          if(new['doc'][i]['Position']=='Staff'):
+    #             j=i
 
-                name= new['doc'][j]['Name']
-                qual= new['doc'][j]['Qualification']
-                des= new['doc'][j]['Designation']
-                exp= new['doc'][j]['Experience']
-                print(" Name:\t",name,"\n","Qualifications:\t ", qual,"\n","Designation:\t", des,"\n","Experience:\t",exp,"\n","\n")
+    #             name= new['doc'][j]['Name']
+    #             qual= new['doc'][j]['Qualification']
+    #             des= new['doc'][j]['Designation']
+    #             exp= new['doc'][j]['Experience']
+    #             print(" Name:\t",name,"\n","Qualifications:\t ", qual,"\n","Designation:\t", des,"\n","Experience:\t",exp,"\n","\n")
 
 
-     elif opt==4:
-          root.PrintTree()
+    #  elif opt==4:
+    #       root.PrintTree()
+
+     else:
+         print("Naaah")
 
 
 
@@ -203,6 +211,6 @@ if __name__ == "__main__":
          if opt==1:
              doc_select()
          elif opt==2:
-             dept_select()
+             dept_select(1)
          elif opt==3:
              exit()
