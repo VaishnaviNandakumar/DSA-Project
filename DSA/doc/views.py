@@ -12,3 +12,7 @@ def search(request):
     print("Works")
     contextSend = DoctorModule.doc_select(name)
     return render(request, 'doc/docpage.html', contextSend)
+
+@csrf_exempt
+def dept(request):
+    return render(request, 'doc/dept.html')
