@@ -184,16 +184,21 @@ def dept_select(opt, sec):
          print(dict_doc)
          return dict_doc
 
-    #  elif opt==3:
-    #      for i in range(0,count):
-    #          if(new['doc'][i]['Position']=='Staff'):
-    #             j=i
+     elif opt==3:
+         dict_staff = {}
+         k = 1
+         for i in range(0,count):
+             if(new['doc'][i]['Position']=='Staff'):
+                j=i
 
-    #             name= new['doc'][j]['Name']
-    #             qual= new['doc'][j]['Qualification']
-    #             des= new['doc'][j]['Designation']
-    #             exp= new['doc'][j]['Experience']
-    #             print(" Name:\t",name,"\n","Qualifications:\t ", qual,"\n","Designation:\t", des,"\n","Experience:\t",exp,"\n","\n")
+                name= new['doc'][j]['Name']
+                qual= new['doc'][j]['Qualification']
+                des= new['doc'][j]['Designation']
+                exp= new['doc'][j]['Experience']
+                temp = {k: {'name':name, 'qual':qual, 'des':des, 'exp':exp}}
+                k+=1
+                dict_staff.update(temp)
+         return dict_staff
 
 
     #  elif opt==4:
@@ -222,6 +227,6 @@ if __name__ == "__main__":
          if opt==1:
              doc_select()
          elif opt==2:
-             dept_select(2, 1)
+             dept_select(3, 1)
          elif opt==3:
              exit()
