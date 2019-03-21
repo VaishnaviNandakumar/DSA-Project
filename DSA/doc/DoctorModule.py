@@ -141,12 +141,14 @@ def doc_select(name):
     return context
 
 
-def dept_select(opt):
+def dept_select(opt, sec):
      new= openfile(os.path.join(THIS_FOLDER, 'database.json'))
      count=count_entry(new)
     #  print("\n Departments available")
     #  print("\n 1. Board \n 2. Doctors \n 3. Staff \n 4. View Hospital Hierarchy")
     #  opt=int(input())
+     sec = int("100"+str(sec))
+     print(sec)
      if opt==1:
          dict_board = {}
          k=1
@@ -163,16 +165,25 @@ def dept_select(opt):
                 dict_board.update(temp)
          return dict_board
 
-    #  elif opt==2:
-    #      print("Code\tDept Name \n  1001\tCardiology \n  1002\tDermatology \n  1003\tGynaecology \n  1004\tOncology \n  1005\tHematology\n  1006\tNeurology\n \n")
-    #      print("Enter the code to number for more information about department")
-    #      inpt=int(input())
+     elif opt==2:
+         print("Code\tDept Name \n  1001\tCardiology \n  1002\tDermatology \n  1003\tGynaecology \n  1004\tOncology \n  1005\tHematology\n  1006\tNeurology\n \n")
+         print("Enter the code to number for more information about department")
+        #  inpt=int(input())
+         dict_doc = {}
+         k=1
+         for i in range(0,18):
+             a=new['doc'][i]['Code']
+             if(a==sec):
+                 print("reached")
+                 name = (new['doc'][i]['Name'])
+                 rank = (new['doc'][i]['Rank'])
+                 fee = new['doc'][i]['Fee']
+                 timing = new['doc'][i]['Timing']
+                 dict_doc.update({k:{'name': name, 'rank': rank, 'fee':fee, 'timing':timing}})
+                 k+=1
+         print(dict_doc)
+         return dict_doc
 
-    #      for i in range(0,18):
-    #          a=new['doc'][i]['Code']
-    #          if(a==inpt):
-    #              print(new['doc'][i]['Name'])
-    #              print(new['doc'][i]['Rank'])
     #  elif opt==3:
     #      for i in range(0,count):
     #          if(new['doc'][i]['Position']=='Staff'):
@@ -211,6 +222,6 @@ if __name__ == "__main__":
          if opt==1:
              doc_select()
          elif opt==2:
-             dept_select(1)
+             dept_select(2, 1)
          elif opt==3:
              exit()

@@ -13,12 +13,12 @@
 }
 
 .card{
-    height:400px;
+    height: 200px;
     border-color: black;
 }
 .dept-btn{
     font-size: 20px;
-    
+
 }
 .card-img-top{
     width:286px;
