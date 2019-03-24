@@ -195,8 +195,8 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              {% for i, j in context.items %}
+            {% for i, j in context.items %}
+              <tr>
                 <th scope="row">{{i}}</th>
                 {% for v, w in j.items %}
                 <td>{{w}}</td>
