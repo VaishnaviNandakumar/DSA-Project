@@ -11,6 +11,9 @@ def search(request):
     name = request.POST.get("name")
     print("Works")
     contextSend = DoctorModule.doc_select(name)
+    if name:
+        image_name = "".join(list(name.split(" ")))+".png"
+        contextSend["image"]=image_name
     return render(request, 'doc/docpage.html', contextSend)
 
 @csrf_exempt

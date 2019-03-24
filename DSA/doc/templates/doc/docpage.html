@@ -30,6 +30,73 @@
         .dropdown:hover .dropdown-menu {
             display: block;
         }
+
+        /* Popup container - can be anything you want */
+        .popup {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* The actual popup */
+        .popup .popuptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: #555;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 0;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -135px;
+        }
+
+        /* Popup arrow */
+        .popup .popuptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #555 transparent transparent transparent;
+        }
+
+        /* Toggle this class - hide and show the popup */
+        .popup .show {
+            visibility: visible;
+            -webkit-animation: fadeIn 1s;
+            animation: fadeIn 1s;
+        }
+
+        /* Add animation (fade in the popup) */
+        @-webkit-keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
     </style>
 </head>
 
@@ -96,9 +163,10 @@
 
         <div class="row">
 
+            {% if name %}
+
             <div class="col-sm-6">
                 <div class="card card1">
-
                     <div class="card-body">
                         <h5 class="card-title">Doctor Details</h5>
                         <br>
@@ -121,9 +189,10 @@
                         <br>
                         <br>
 
-                        <a href="#" class="btn btn-primary dept-btn">Schedule Appointment</a>
+                        <button class="btn btn-primary dept-btn popup" onclick="myFunction()">Schedule Appointment
+                            <span class="popuptext" id="myPopup">Thank you. Appointment Scheduled.</span>
+                        </button>
                     </div>
-
                 </div>
 
             </div>
@@ -134,11 +203,28 @@
                         <h5 class="card-title">Work Schedule</h5>
                         <p class="card-text">This is a graph to display the availability of the doctor throughtout the
                             week.</p>
-                        <img src={% static 'Figure_1.png' %} class="card-img-top" alt="...">
-
+                        {% if image %}
+                        <img src={% static '' %}{{ image }} class="card-img-top" alt="Graph">
+                        {% endif %}
                     </div>
                 </div>
             </div>
+            {% endif %}
+
+
+
+
+            <script>
+                // When the user clicks on div, open the popup
+                function myFunction() {
+                    var popup = document.getElementById("myPopup");
+                    popup.classList.toggle("show");
+                }
+            </script>
+
+
+</html>
+
 </body>
 
 </html>
