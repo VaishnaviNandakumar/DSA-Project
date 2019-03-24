@@ -23,3 +23,7 @@ def deptpage(request, id):
     context = DoctorModule.dept_select(int(id), 0)
     print(context)
     return render(request, 'doc/deptpage.html', {'context':context})
+
+@csrf_exempt
+def about(request):
+    return render(request, "doc/about.html")
